@@ -62,9 +62,6 @@ public class CoolWeatherDB {
                 list.add(province);
             }while(cursor.moveToNext());
         }
-        if(cursor!=null){
-            cursor.close();
-        }
         return list;
     }
 
@@ -82,7 +79,7 @@ public class CoolWeatherDB {
     //从数据库读取某省下所有的城市信息
     public List<City> loadCities(int provinceId){
         List<City> list=new ArrayList<City>();
-        Cursor cursor=db.query("City",null,null,null,null,null,null);
+        Cursor cursor=db.query("City",null,"province_id=?",new String[]{String.valueOf(provinceId)},null,null,null);
         if(cursor.moveToFirst()){
             do{
                 City city=new City();
@@ -113,7 +110,7 @@ public class CoolWeatherDB {
     //从数据库读取某城市下所有的县信息
     public List<County> loadCounties(int cityId){
         List<County> list=new ArrayList<County>();
-        Cursor cursor=db.query("County",null,null,null,null,null,null);
+        Cursor cursor=db.query("County",null,"city_id=?",new String[]{String.valueOf(cityId)},null,null,null);
         if(cursor.moveToFirst()){
             do{
                 County county=new County();

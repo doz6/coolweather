@@ -88,7 +88,7 @@ public class ChooseAreaActivity extends Activity {
         coolWeatherDB=CoolWeatherDB.getInstance(this);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int index, long arg3) {
+            public void onItemClick(AdapterView<?> arg0, View view, int index, long arg3) {
                 if(currentLevel==LEVEL_PROVINCE){
                     selectedProvince=provinceList.get(index);
                     queryCities();
